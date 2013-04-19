@@ -4,7 +4,7 @@
 " Fixed by : Fujii Shohei <fujii.shohei@gmail.com>
 
 " Helper commands
-function! s:RosDecodePath(path)
+function! ros#RosDecodePath(path)
     let rosname = ""
     let reldir = ""
     let rosdir = ""
@@ -59,7 +59,7 @@ function! ros#RosChangeDir(...)
         return
     endif
 
-    let rosvals = s:RosDecodePath(a:1)
+    let rosvals = ros#RosDecodePath(a:1)
     if rosvals[1] == ""
         echo "No such package: " . a:1
         return
@@ -76,7 +76,7 @@ function! ros#RosEditDir(...)
         return
     endif
 
-    let rosvals = s:RosDecodePath(a:1)
+    let rosvals = ros#RosDecodePath(a:1)
     if rosvals[1] == ""
         echo "No such package: " . a:1
         return
