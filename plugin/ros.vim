@@ -54,3 +54,6 @@ endfunction
 
 command! -nargs=* -complete=customlist,s:Roscdcomplete Roscd :call ros#RosChangeDir(<f-args>)
 command! -nargs=* -complete=customlist,s:Rosedcomplete Rosed :call ros#RosEditDir(<f-args>)
+command! -nargs=* -complete=customlist,s:Rosedcomplete Roscded :call ros#RosCDandEditDir(<f-args>)
+command! -nargs=* -complete=customlist,s:Rosedcomplete Rostabed :call ros#RosTabEditDir(<f-args>)
+command! -nargs=* -complete=customlist,s:Rosedcomplete Roscdtabed :call ros#RosCDandTabEditDir(<f-args>)

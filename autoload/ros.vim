@@ -85,3 +85,57 @@ function! ros#RosEditDir(...)
         execute "edit " . dir
     endif
 endfunction
+
+function! ros#RosCDandEditDir(...)
+    if a:0 == 0 || a:1 == ""
+        lcd $ROS_ROOT
+        edit $ROS_ROOT
+        return
+    endif
+
+    let rosvals = ros#RosDecodePath(a:1)
+    if rosvals[1] == ""
+        echo "No such package: " . a:1
+        return
+    else
+        let file = rosvals[1] . rosvals[2] . rosvals[3]
+        let dir  = rosvals[1] . rosvals[2]
+        execute "lcd " . dir
+        execute "edit " . file
+    endif
+endfunction
+
+function! ros#RosTabEditDir(...)
+    if a:0 == 0 || a:1 == ""
+        tabedit $ROS_ROOT
+        return
+    endif
+
+    let rosvals = ros#RosDecodePath(a:1)
+    if rosvals[1] == ""
+        echo "No such package: " . a:1
+        return
+    else
+        let dir = rosvals[1] . rosvals[2] . rosvals[3]
+        execute "tabedit " . dir
+    endif
+endfunction
+
+function! ros#RosCDandTabEditDir(...)
+    if a:0 == 0 || a:1 == ""
+        tabedit $ROS_ROOT
+        lcd $ROS_ROOT
+        return
+    endif
+
+    let rosvals = ros#RosDecodePath(a:1)
+    if rosvals[1] == ""
+        echo "No such package: " . a:1
+        return
+    else
+        let file = rosvals[1] . rosvals[2] . rosvals[3]
+        let dir  = rosvals[1] . rosvals[2]
+        execute "tabedit " . file
+        execute "lcd " . dir
+    endif
+endfunction
